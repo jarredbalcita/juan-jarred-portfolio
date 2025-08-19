@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Juan Jarred Balcita</title>
+    <title>Skills - Juan Jarred Balcita</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -30,6 +30,7 @@
         nav {
             padding: 2rem 0;
             border-bottom: 1px solid #eee;
+            position: relative;
         }
 
         nav .container {
@@ -63,6 +64,63 @@
             color: #333;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            margin: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f8f9fa;
+            color: #333;
+        }
+
         /* Main Content */
         main {
             padding: 4rem 0;
@@ -84,455 +142,178 @@
             font-size: 1.1rem;
             color: #666;
             line-height: 1.7;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-content {
+        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .contact-info h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
+        .skill-category {
             background: #f8f9fa;
-            border-radius: 8px;
-            transition: background 0.3s ease;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
         }
 
-        .contact-item:hover {
-            background: #e9ecef;
-        }
-
-        .contact-icon {
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
-
-        .contact-details h3 {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-details p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .contact-details a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .availability {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #f0f9ff;
-            border: 1px solid #bae6fd;
-            border-radius: 8px;
-        }
-
-        .availability h3 {
-            color: #0369a1;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .availability p {
-            color: #075985;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Form */
-        .contact-form h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: #2563eb;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Social Links */
-        .social-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid #eee;
-            text-align: center;
-        }
-
-        .social-section h2 {
-            font-size: 1.5rem;
+        .skill-category h2 {
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: #333;
-        }
-
-        .social-section p {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-link {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: background 0.3s ease, transform 0.2s ease;
         }
 
-        .social-link:hover {
-            background: #e9ecef;
-            transform: translateY(-2px);
+        .skill-list {
+            list-style: none;
         }
 
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #dcfce7;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-            padding: 1rem;
-            border-radius: 8px;
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 2px;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e5e7eb;
+        }
+
+        .skill-dot.filled {
+            background: #2563eb;
+        }
+
+        .tools-section {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid #eee;
+        }
+
+        .tools-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-category {
+            text-align: center;
+        }
+
+        .tool-category h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tool-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .tool-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .learning-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .learning-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .learning-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .learning-tag {
+            background: white;
+            color: #2563eb;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 2px solid #2563eb;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+            .mobile-menu-toggle {
+                display: flex;
             }
 
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: #e9ecef;
-        }
-
-        .contact-icon {
-            font-size: 1.2rem;
-            margin-top: 0.2rem;
-        }
-
-        .contact-details h3 {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-details p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .contact-details a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            text-decoration: underline;
-        }
-
-        .availability {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: #f0f9ff;
-            border: 1px solid #bae6fd;
-            border-radius: 8px;
-        }
-
-        .availability h3 {
-            color: #0369a1;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .availability p {
-            color: #075985;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Form */
-        .contact-form h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #2563eb;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: #2563eb;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Social Links */
-        .social-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid #eee;
-            text-align: center;
-        }
-
-        .social-section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .social-section p {
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: #f8f9fa;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .social-link:hover {
-            background: #e9ecef;
-            transform: translateY(-2px);
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            background: #dcfce7;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2rem;
             }
 
-            .nav-links {
-                display: none;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .form-row {
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
 
-            .social-links {
-                flex-direction: column;
-                align-items: center;
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
     </style>
@@ -541,14 +322,28 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="logo">Juan Jarred Balcita</a>
+            <a href="index.html" class="logo">Juan Jarred Balcita</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About me</a></li>
-                <li><a href="skills.html">Skills</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About me</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -556,166 +351,115 @@
     <main>
         <div class="container">
             <div class="page-header">
-                <h1>Let's Work Together</h1>
-                <p>I'm always excited to discuss new opportunities, creative projects, and ways to bring innovative ideas to life.</p>
+                <h1>Skills & Technologies</h1>
+                <p>A comprehensive toolkit for modern web development and user experience design, built through hands-on projects and continuous learning.</p>
             </div>
 
-            <div class="contact-content">
-                <!-- Contact Information -->
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p><a href="mailto:juan.balcita@student.hw.ac.uk">juan.balcita@student.hw.ac.uk</a></p>
-                            <p>Best for: Project inquiries, collaborations</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <span class="contact-icon">💼</span>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <p><a href="https://www.linkedin.com/in/juan-jarred-balcita/" target="_blank">linkedin.com/in/juan-jarred-balcita</a></p>
-                            <p>Best for: Professional networking, opportunities</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <span class="contact-icon">💻</span>
-                        <div class="contact-details">
-                            <h3>GitHub</h3>
-                            <p><a href="https://github.com/jarredbalcita" target="_blank">github.com/jarredbalcita</a></p>
-                            <p>Best for: Code review, open source projects</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Dubai, United Arab Emirates</p>
-                            <p>Available for remote work worldwide</p>
-                        </div>
-                    </div>
-
-                    <div class="availability">
-                        <h3>🟢 Currently Available</h3>
-                        <p>Open for freelance projects, internships, and collaboration opportunities. Response time: within 24 hours.</p>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form">
-                    <h2>Send a Message</h2>
-                    
-                    <div class="success-message" id="successMessage">
-                        ✅ Thanks for your message! I'll get back to you within 24 hours.
-                    </div>
-
-                    <form id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" id="firstName" name="firstName" required>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h2>🚀 Frontend Development</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
                             </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" id="lastName" name="lastName" required>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">JavaScript (ES6+)</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <select id="subject" name="subject" required>
-                                <option value="">Select a topic...</option>
-                                <option value="freelance">Freelance Project</option>
-                                <option value="internship">Internship Opportunity</option>
-                                <option value="collaboration">Collaboration</option>
-                                <option value="feedback">Feedback on Work</option>
-                                <option value="mentorship">Mentorship</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell me about your project, idea, or how we might work together..." required></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">HTML5 & CSS3</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Redux</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
 
-            <!-- Social Links Section -->
-            <div class="social-section">
-                <h2>Connect With Me</h2>
-                <p>Follow my journey and stay updated with my latest projects and insights</p>
-                
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/juan-jarred-balcita/" class="social-link" target="_blank">
-                        💼 LinkedIn
-                    </a>
-                    <a href="https://github.com/jarredbalcita" class="social-link" target="_blank">
-                        💻 GitHub
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        🐦 Twitter
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        🎨 Dribbble
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        // Form submission handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            
-            // Scroll to success message
-            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 5000);
-        });
-
-        // Add form validation feedback
-        const inputs = document.querySelectorAll('input, textarea, select');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                if (this.checkValidity()) {
-                    this.style.borderColor = '#10b981';
-                } else {
-                    this.style.borderColor = '#ef4444';
-                }
-            });
-
-            input.addEventListener('input', function() {
-                if (this.style.borderColor === '#ef4444' && this.checkValidity()) {
-                    this.style.borderColor = '#e5e7eb';
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+                <div class="skill-category">
+                    <h2>🎨 UX/UI Design</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Figma</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">User Research</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Wireframing</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Prototyping</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Design Systems</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
