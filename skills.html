@@ -1,187 +1,14 @@
-.tool-category {
-            text-align: center;
-            background: var(--background);
-            padding: 2rem;
-            border-radius: 12px;
-            border: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills - Juan Jarred Balcita</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Core Colors */
-            --primary: #4A90E2;
-            --success: #4CAF50;
-            --alert: #E85D75;
-            --idle: #D4942B;
-            
-            /* Base Colors */
-            --white: #FFFFFF;
-            --transparent: transparent;
-            
-            /* Text Colors */
-            --foreground: #2C2C2C;
-            --background: #161616;
-            --text: #FFFFFF;
-            --text-supporting: #A0A0A0;
-            --text-shy: #6B6B6B;
-            
-            /* UI Colors */
-            --mist: #3A3A3A;
-            --mist-extra: #2D2D2D;
-            --overlay: #0D0D0D;
-            --contrast: #F5F5F5;
-            
-            /* Label Colors for Accents */
-            --label-1: #E85D75;
-            --label-2: #D4942B;
-            --label-3: #C4D82B;
-            --label-4: #7BD82B;
-            --label-5: #2BD87B;
-            --label-6: #2BD8C4;
-            --label-7: #2BC4D8;
-            --label-8: #2B7BD8;
-            --label-9: #7B2BD8;
-            --label-10: #C42BD8;
-            --label-11: #D82B7B;
-            --label-12: #D82B3C;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--background);
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--overlay);
-            z-index: 1000;
-            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
-            border-bottom: 1px solid var(--mist);
-        }
-
-        nav.scrolled {
-            background: rgba(13, 13, 13, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .logo:hover {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text);
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: var(--overlay);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            z-index: 999;
-            border-top: 1px solid var(--mist);
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            padding: 1rem 0;
-        }
-
-        .mobile-menu li {
-            margin: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            border-bottom: 1px solid var(--mist);
-            transition: background 0.3s ease;
-        }
-
-        .mobile-menu a:hover,
-        .mobile-menu a.active {
-            background: var(--mist-extra);
-            color: var(--primary);
-        }
-
-        /* Main Content */
+        /* Skills Page Specific Styles */
+        
         main {
             padding: 4rem 0;
             margin-top: 70px;
@@ -189,26 +16,6 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
-            background: linear-gradient(135deg, var(--white) 0%, var(--text) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-header p {
-            font-size: 1.1rem;
-            color: var(--text-supporting);
-            line-height: 1.7;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .skills-grid {
@@ -402,18 +209,6 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -752,47 +547,11 @@
         </div>
     </main>
 
+    <!-- External JavaScript -->
+    <script src="js/global.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuToggle.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            
-            // Animate hamburger menu
-            const spans = mobileMenuToggle.querySelectorAll('span');
-            if (mobileMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                const spans = mobileMenuToggle.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
+        // Initialize skills page
+        GlobalJS.initPage('skills');
     </script>
 </body>
 </html>
