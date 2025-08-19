@@ -30,6 +30,7 @@
         nav {
             padding: 2rem 0;
             border-bottom: 1px solid #eee;
+            position: relative;
         }
 
         nav .container {
@@ -60,6 +61,63 @@
 
         .nav-links a:hover,
         .nav-links a.active {
+            color: #333;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu li {
+            margin: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            background: #f8f9fa;
             color: #333;
         }
 
@@ -238,155 +296,16 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            .mobile-menu-toggle {
+                display: flex;
             }
 
-            .tools-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .skill-name {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .skill-level {
-            display: flex;
-            gap: 2px;
-        }
-
-        .skill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #e5e7eb;
-        }
-
-        .skill-dot.filled {
-            background: #2563eb;
-        }
-
-        .tools-section {
-            margin-top: 4rem;
-            padding-top: 4rem;
-            border-top: 1px solid #eee;
-        }
-
-        .tools-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #333;
-            text-align: center;
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .tool-category {
-            text-align: center;
-        }
-
-        .tool-category h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .tool-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .tool-icon {
-            width: 60px;
-            height: 60px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .tool-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .learning-section {
-            margin-top: 4rem;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .learning-section h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .learning-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .learning-tag {
-            background: white;
-            color: #2563eb;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 2px solid #2563eb;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2rem;
-            }
-
-            .nav-links {
-                display: none;
             }
 
             .skills-grid {
@@ -403,7 +322,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="logo">Juan Jarred Balcita</a>
+            <a href="index.html" class="logo">Juan Jarred Balcita</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About me</a></li>
@@ -411,6 +330,20 @@
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About me</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -530,187 +463,3 @@
                                 <div class="skill-dot filled"></div>
                                 <div class="skill-dot"></div>
                                 <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h2>🛠 Development Tools</h2>
-                    <ul class="skill-list">
-                        <li class="skill-item">
-                            <span class="skill-name">Git & GitHub</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">Jest Testing</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">Cypress</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                                <div class="skill-dot"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">npm/yarn</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">VS Code</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h2>💡 Core Competencies</h2>
-                    <ul class="skill-list">
-                        <li class="skill-item">
-                            <span class="skill-name">Problem Solving</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">User-Centered Design</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">Accessibility (WCAG)</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">Responsive Design</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                        <li class="skill-item">
-                            <span class="skill-name">Cross-Browser Testing</span>
-                            <div class="skill-level">
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot filled"></div>
-                                <div class="skill-dot"></div>
-                                <div class="skill-dot"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tools-section">
-                <h2>Design & Development Tools</h2>
-                <div class="tools-grid">
-                    <div class="tool-category">
-                        <h3>Design Tools</h3>
-                        <div class="tool-icons">
-                            <div class="tool-icon">🎨</div>
-                            <div class="tool-icon">📐</div>
-                            <div class="tool-icon">🖌️</div>
-                            <div class="tool-icon">📱</div>
-                        </div>
-                        <p>Figma, Adobe XD, Sketch, InVision</p>
-                    </div>
-                    
-                    <div class="tool-category">
-                        <h3>Development</h3>
-                        <div class="tool-icons">
-                            <div class="tool-icon">💻</div>
-                            <div class="tool-icon">🔧</div>
-                            <div class="tool-icon">📦</div>
-                            <div class="tool-icon">🌐</div>
-                        </div>
-                        <p>VS Code, Chrome DevTools, Webpack, Netlify</p>
-                    </div>
-                    
-                    <div class="tool-category">
-                        <h3>Collaboration</h3>
-                        <div class="tool-icons">
-                            <div class="tool-icon">👥</div>
-                            <div class="tool-icon">📋</div>
-                            <div class="tool-icon">💬</div>
-                            <div class="tool-icon">📊</div>
-                        </div>
-                        <p>Slack, Notion, Miro, Jira</p>
-                    </div>
-                    
-                    <div class="tool-category">
-                        <h3>Version Control</h3>
-                        <div class="tool-icons">
-                            <div class="tool-icon">🔀</div>
-                            <div class="tool-icon">📝</div>
-                            <div class="tool-icon">🚀</div>
-                            <div class="tool-icon">☁️</div>
-                        </div>
-                        <p>Git, GitHub, GitLab, Vercel</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="learning-section">
-                <h2>Currently Learning 📚</h2>
-                <p>Always expanding my skillset and staying current with industry trends</p>
-                <div class="learning-tags">
-                    <span class="learning-tag">Next.js</span>
-                    <span class="learning-tag">GraphQL</span>
-                    <span class="learning-tag">Three.js</span>
-                    <span class="learning-tag">Advanced Animation</span>
-                    <span class="learning-tag">Design Tokens</span>
-                    <span class="learning-tag">Web Performance</span>
-                    <span class="learning-tag">Advanced Testing</span>
-                </div>
-            </div>
-        </div>
-    </main>
-</body>
-</html>
