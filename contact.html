@@ -25,8 +25,8 @@
             
             /* Text Colors */
             --foreground: #2C2C2C;
-            --background: #1A1A1A;
-            --text: #E0E0E0;
+            --background: #161616;
+            --text: #FFFFFF;
             --text-supporting: #A0A0A0;
             --text-shy: #6B6B6B;
             
@@ -217,7 +217,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 2rem;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .contact-item {
@@ -226,14 +226,14 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
             padding: 1rem;
-            background: var(--mist);
+            background: var(--background);
             border-radius: 8px;
             transition: background 0.3s ease, border-color 0.3s ease;
-            border: 1px solid var(--mist);
+            border: 1px solid var(--white);
         }
 
         .contact-item:hover {
-            background: var(--mist-extra);
+            background: var(--background);
             border-color: var(--primary);
         }
 
@@ -254,20 +254,20 @@
         }
 
         .contact-details a {
-            color: var(--primary);
+            color: var(--white);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-details a:hover {
-            color: var(--label-7);
+            color: var(--primary);
             text-decoration: underline;
         }
 
         .availability {
             margin-top: 2rem;
             padding: 1.5rem;
-            background: var(--mist);
+            background: var(--background);
             border: 1px solid var(--success);
             border-radius: 8px;
         }
@@ -288,7 +288,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 2rem;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .form-group {
@@ -307,12 +307,12 @@
         .form-group select {
             width: 100%;
             padding: 0.8rem;
-            border: 2px solid var(--mist);
+            border: 1px solid var(--white);
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s ease, background 0.3s ease;
             font-family: inherit;
-            background: var(--mist-extra);
+            background: var(--background);
             color: var(--white);
         }
 
@@ -321,7 +321,7 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--primary);
-            background: var(--mist);
+            background: var(--background);
         }
 
         .form-group textarea {
@@ -337,10 +337,10 @@
 
         .submit-btn {
             width: 100%;
-            background: var(--primary);
+            background: var(--background);
             color: var(--white);
             padding: 1rem 2rem;
-            border: none;
+            border: 1px solid var(--white);
             border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
@@ -349,7 +349,7 @@
         }
 
         .submit-btn:hover {
-            background: var(--label-8);
+            border-color: var(--primary);
             transform: translateY(-1px);
         }
 
@@ -369,7 +369,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: var(--white);
         }
 
         .social-section p {
@@ -388,17 +388,17 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.8rem 1.5rem;
-            background: var(--mist);
+            background: var(--background);
             border-radius: 8px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--white);
             font-weight: 500;
             transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-            border: 1px solid var(--mist);
+            border: 1px solid var(--white);
         }
 
         .social-link:hover {
-            background: var(--mist-extra);
+            background: var(--background);
             transform: translateY(-2px);
             border-color: var(--primary);
         }
