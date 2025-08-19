@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #333;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-image {
+            height: 240px;
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .project-image.budget {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        }
+
+        .project-image.team {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+        }
+
+        .project-image.fitness {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        }
+
+        .project-status {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-duration {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-highlights h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-highlights ul {
+            list-style: none;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .project-highlights li {
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .project-highlights li:before {
+            content: '•';
+            color: #2563eb;
+            position: absolute;
+            left: 0;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .more-projects {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #eee;
+        }
+
+        .more-projects h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .more-projects p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #333;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .github-link:hover {
+            background: #1f2937;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Juan Jarred Balcita</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Featured Projects</h1>
+                <p>A showcase of my work combining frontend development with thoughtful user experience design. Each project represents a journey from user research to final implementation.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Budget Manager Project -->
+                <div class="project-card">
+                    <div class="project-image budget">
+                        💰
+                        <div class="project-status">In Development</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h2>BudgetBuddy</h2>
+                                <p class="project-duration">September 2024 - Present</p>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            A collaborative expense tracking application that allows multiple users to manage shared budgets in real-time. Built with a focus on accessibility and intuitive financial data visualization.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Multi-user budget sharing and permissions</li>
+                                <li>Real-time expense tracking and notifications</li>
+                                <li>Interactive spending analytics dashboard</li>
+                                <li>Mobile-first responsive design</li>
+                                <li>WCAG 2.1 accessibility compliance</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">User Research</span>
+                            <span class="tech-tag">Jest</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">💻 GitHub</a>
+                            <a href="#" class="project-link">🎨 Design Process</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Collaboration Project -->
+                <div class="project-card">
+                    <div class="project-image team">
+                        🚀
+                        <div class="project-status">Completed</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h2>TeamSync Dashboard</h2>
+                                <p class="project-duration">June - August 2024</p>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Modern team collaboration platform featuring real-time messaging, task management, and project tracking. Conducted extensive user research with 15+ teams to optimize workflow efficiency.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Real-time team messaging and file sharing</li>
+                                <li>Kanban-style task management system</li>
+                                <li>Project timeline and milestone tracking</li>
+                                <li>Integrated video calling functionality</li>
+                                <li>Custom notification preferences</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Redux</span>
+                            <span class="tech-tag">Adobe XD</span>
+                            <span class="tech-tag">Usability Testing</span>
+                            <span class="tech-tag">Cypress</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">💻 GitHub</a>
+                            <a href="#" class="project-link">📊 User Research</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitness Tracker Project -->
+                <div class="project-card">
+                    <div class="project-image fitness">
+                        💪
+                        <div class="project-status">Beta Testing</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <div>
+                                <h2>FitTracker Pro</h2>
+                                <p class="project-duration">March - July 2024</p>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive fitness tracking application with workout planning, progress visualization, and social features. Emphasizes motivational UX design and data-driven insights for sustained user engagement.
+                        </p>
+                        
+                        <div class="project-highlights">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Personalized workout planning and tracking</li>
+                                <li>Progress visualization with interactive charts</li>
+                                <li>Social challenges and achievement system</li>
+                                <li>Integration with popular fitness APIs</li>
+                                <li>Offline-first PWA architecture</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Chart.js</span>
+                            <span class="tech-tag">PWA</span>
+                            <span class="tech-tag">Figma</span>
+                            <span class="tech-tag">User Testing</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link">🔗 Live Demo</a>
+                            <a href="#" class="project-link">💻 GitHub</a>
+                            <a href="#" class="project-link">🎨 Design System</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="more-projects">
+                <h2>More Projects & Experiments</h2>
+                <p>Explore my complete collection of projects, including smaller experiments, open-source contributions, and university coursework.</p>
+                <a href="#" class="github-link">
+                    💻 View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

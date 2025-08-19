@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Your Name</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #333;
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .about-text a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .about-text a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .education-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item h4 {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .skills-preview {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .skills-preview h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #2563eb;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .personal-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid #eee;
+        }
+
+        .personal-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interest-item {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .interest-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .interest-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .interests {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Juan Jarred Balcita</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About me</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>About Me</h1>
+                <p>A passionate Computer Science student combining technical expertise with design thinking to create meaningful digital experiences.</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Hello! I'm a passionate developer and designer 👋</h2>
+                    
+                    <p>As a 2nd year Computer Science student at <a href="#">Heriot-Watt University</a>, I've discovered my passion lies at the intersection of technology and user experience. I believe great software isn't just about clean code—it's about understanding users and creating solutions that genuinely improve their lives.</p>
+
+                    <p>My dual focus on <strong>Frontend Development</strong> and <strong>UX Design</strong> allows me to bridge the gap between beautiful designs and functional implementations. I enjoy tackling complex problems and turning them into elegant, accessible solutions that users love to interact with.</p>
+
+                    <p>Currently, I'm working on several exciting projects including a multi-user budget manager, team collaboration dashboard, and fitness tracking application. Each project challenges me to think both as a developer and a designer, ensuring the final product is both technically sound and user-centered.</p>
+
+                    <h2>What drives me 🚀</h2>
+                    
+                    <p>I'm fascinated by the psychology behind user interactions and how small design decisions can significantly impact user behavior. Whether it's optimizing a button placement for better accessibility or implementing smooth animations that provide meaningful feedback, I love the details that make digital experiences feel magical.</p>
+
+                    <p>When I'm not coding or designing, you can find me exploring the latest web technologies, contributing to open-source projects, or sketching out ideas for my next creative venture. I'm particularly interested in the emerging trends in web accessibility and inclusive design.</p>
+
+                    <div class="personal-section">
+                        <h2>Beyond the screen 🌟</h2>
+                        <p>I believe diverse experiences make better designers and developers. Here's what keeps me inspired:</p>
+                        
+                        <div class="interests">
+                            <div class="interest-item">
+                                <h3>🎨 Creative Pursuits</h3>
+                                <p>Digital illustration, photography, and exploring design trends across different mediums to bring fresh perspectives to my work.</p>
+                            </div>
+                            <div class="interest-item">
+                                <h3>🌍 Tech Community</h3>
+                                <p>Active in local developer meetups, design workshops, and contributing to open-source projects that make technology more accessible.</p>
+                            </div>
+                            <div class="interest-item">
+                                <h3>📚 Continuous Learning</h3>
+                                <p>Always exploring new frameworks, design methodologies, and user research techniques to stay at the forefront of digital innovation.</p>
+                            </div>
+                            <div class="interest-item">
+                                <h3>🏃‍♂️ Active Lifestyle</h3>
+                                <p>Running, hiking, and staying active helps me maintain the energy and focus needed for creative problem-solving.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="education-section">
+                        <h3>🎓 Education</h3>
+                        <div class="education-item">
+                            <h4>Heriot-Watt University</h4>
+                            <p>Bachelor of Computer Science<br>
+                            2nd Year Student (2023-2027)<br>
+                            Edinburgh, Scotland</p>
+                        </div>
+                        
+                        <div class="education-item">
+                            <h4>Location</h4>
+                            <p>Currently based in Dubai, UAE<br>
+                            Open to remote opportunities worldwide<br>
+                            Available for relocation</p>
+                        </div>
+
+                        <div class="education-item">
+                            <h4>Relevant Coursework</h4>
+                            <p>• Web Technologies<br>
+                            • Software Engineering<br>
+                            • Data Structures & Algorithms<br>
+                            • UI/UX Design Principles</p>
+                        </div>
+                    </div>
+
+                    <div class="skills-preview">
+                        <h3>💡 Core Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">Redux</span>
+                            <span class="skill-tag">CSS3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
