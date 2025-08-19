@@ -9,34 +9,11 @@ Key features:
 - Project section with descriptions and links
 - Contact section for easy communication
 
-Live Demo: [View Portfolio](https://your-portfolio-url.com) <!-- Replace with your actual URL -->
+Live Demo: [View Portfolio](https://juan-jarred-balcita.netlify.app/) 
 
 ## Technologies Used
 
 - HTML5, CSS3, JavaScript (ES6+)
-- Framework: [Specify if used, e.g., React, or remove if vanilla]
-- Styling: [e.g., Tailwind CSS, Bootstrap, or Custom CSS]
-- Deployment: [e.g., Vercel, Netlify, or GitHub Pages]
-
-## Setup
-
-To run the project locally:
-
-1. **Clone the Repository**:
-   ```
-   git clone https://github.com/your-username/portfolio-website.git
-   cd portfolio-website
-   ```
-
-2. **Install Dependencies** (if applicable):
-   ```
-   npm install
-   ```
-   <!-- Remove if no dependencies, e.g., for static HTML/CSS -->
-
-3. **Run Locally**:
-   - For static sites: Open `index.html` in a browser or use `npx serve`.
-   - For frameworks: Run `npm run dev` and visit `http://localhost:3000`.
 
 ## Contact
 
