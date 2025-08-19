@@ -12,11 +12,50 @@
             box-sizing: border-box;
         }
 
+        :root {
+            /* Core Colors */
+            --primary: #4A90E2;
+            --success: #4CAF50;
+            --alert: #E85D75;
+            --idle: #D4942B;
+            
+            /* Base Colors */
+            --white: #FFFFFF;
+            --transparent: transparent;
+            
+            /* Text Colors */
+            --foreground: #2C2C2C;
+            --background: #1A1A1A;
+            --text: #E0E0E0;
+            --text-supporting: #A0A0A0;
+            --text-shy: #6B6B6B;
+            
+            /* UI Colors */
+            --mist: #3A3A3A;
+            --mist-extra: #2D2D2D;
+            --overlay: #0D0D0D;
+            --contrast: #F5F5F5;
+            
+            /* Label Colors for Accents */
+            --label-1: #E85D75;
+            --label-2: #D4942B;
+            --label-3: #C4D82B;
+            --label-4: #7BD82B;
+            --label-5: #2BD87B;
+            --label-6: #2BD8C4;
+            --label-7: #2BC4D8;
+            --label-8: #2B7BD8;
+            --label-9: #7B2BD8;
+            --label-10: #C42BD8;
+            --label-11: #D82B7B;
+            --label-12: #D82B3C;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #fff;
+            color: var(--text);
+            background: var(--background);
             font-size: 16px;
         }
 
@@ -28,22 +67,38 @@
 
         /* Navigation */
         nav {
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
-            position: relative;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--overlay);
+            z-index: 1000;
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+            border-bottom: 1px solid var(--mist);
+        }
+
+        nav.scrolled {
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #333;
+            color: var(--white);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--primary);
         }
 
         .nav-links {
@@ -54,14 +109,14 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #666;
+            color: var(--text);
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: #333;
+            color: var(--primary);
         }
 
         /* Mobile Menu */
@@ -75,7 +130,7 @@
         .mobile-menu-toggle span {
             width: 25px;
             height: 3px;
-            background: #333;
+            background: var(--text);
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -86,10 +141,10 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background: #fff;
-            border-bottom: 1px solid #eee;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
+            background: var(--overlay);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            z-index: 999;
+            border-top: 1px solid var(--mist);
         }
 
         .mobile-menu.active {
@@ -109,21 +164,22 @@
             display: block;
             padding: 1rem 2rem;
             text-decoration: none;
-            color: #666;
+            color: var(--text);
             font-weight: 500;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid var(--mist);
             transition: background 0.3s ease;
         }
 
         .mobile-menu a:hover,
         .mobile-menu a.active {
-            background: #f8f9fa;
-            color: #333;
+            background: var(--mist-extra);
+            color: var(--primary);
         }
 
         /* Main Content */
         main {
             padding: 4rem 0;
+            margin-top: 70px;
         }
 
         .page-header {
@@ -135,12 +191,16 @@
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--white) 0%, var(--text) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .page-header p {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--text-supporting);
             line-height: 1.7;
             max-width: 600px;
             margin: 0 auto;
@@ -154,17 +214,25 @@
         }
 
         .skill-category {
-            background: #f8f9fa;
+            background: var(--mist);
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid #2563eb;
+            border: 1px solid var(--mist);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
         }
 
         .skill-category h2 {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--primary);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -180,14 +248,20 @@
             align-items: center;
             margin-bottom: 1rem;
             padding: 0.8rem;
-            background: white;
+            background: var(--mist-extra);
             border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            border: 1px solid var(--mist);
+            transition: background 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: var(--mist);
         }
 
         .skill-name {
             font-weight: 500;
-            color: #333;
+            color: var(--white);
         }
 
         .skill-level {
@@ -199,24 +273,24 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #e5e7eb;
+            background: var(--text-shy);
         }
 
         .skill-dot.filled {
-            background: #2563eb;
+            background: var(--primary);
         }
 
         .tools-section {
             margin-top: 4rem;
             padding-top: 4rem;
-            border-top: 1px solid #eee;
+            border-top: 1px solid var(--mist);
         }
 
         .tools-section h2 {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 2rem;
-            color: #333;
+            color: var(--white);
             text-align: center;
         }
 
@@ -228,13 +302,28 @@
 
         .tool-category {
             text-align: center;
+            background: var(--mist);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--mist);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .tool-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
         .tool-category h3 {
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--primary);
+        }
+
+        .tool-category p {
+            color: var(--text-supporting);
+            margin-top: 1rem;
         }
 
         .tool-icons {
@@ -247,33 +336,39 @@
         .tool-icon {
             width: 60px;
             height: 60px;
-            background: #f8f9fa;
+            background: var(--mist-extra);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid var(--mist);
         }
 
         .tool-icon:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
         }
 
         .learning-section {
             margin-top: 4rem;
             padding: 2rem;
-            background: #f8f9fa;
+            background: var(--mist);
             border-radius: 12px;
             text-align: center;
+            border: 1px solid var(--mist);
         }
 
         .learning-section h2 {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--primary);
+        }
+
+        .learning-section p {
+            color: var(--text-supporting);
         }
 
         .learning-tags {
@@ -285,13 +380,18 @@
         }
 
         .learning-tag {
-            background: white;
-            color: #2563eb;
+            background: var(--mist-extra);
+            color: var(--primary);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
-            border: 2px solid #2563eb;
+            border: 2px solid var(--primary);
+            transition: transform 0.2s ease;
+        }
+
+        .learning-tag:hover {
+            transform: scale(1.05);
         }
 
         /* Responsive */
@@ -463,4 +563,230 @@
                                 <div class="skill-dot filled"></div>
                                 <div class="skill-dot"></div>
                                 <div class="skill-dot"></div>
-                            
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h2>🛠 Development Tools</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Git & GitHub</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Jest Testing</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Cypress</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">npm/yarn</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">VS Code</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h2>💡 Core Competencies</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span class="skill-name">Problem Solving</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">User-Centered Design</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Accessibility (WCAG)</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Responsive Design</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Cross-Browser Testing</span>
+                            <div class="skill-level">
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot filled"></div>
+                                <div class="skill-dot"></div>
+                                <div class="skill-dot"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tools-section">
+                <h2>Design & Development Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-category">
+                        <h3>Design Tools</h3>
+                        <div class="tool-icons">
+                            <div class="tool-icon">🎨</div>
+                            <div class="tool-icon">📐</div>
+                            <div class="tool-icon">🖌️</div>
+                            <div class="tool-icon">📱</div>
+                        </div>
+                        <p>Figma, Adobe XD, Sketch, InVision</p>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3>Development</h3>
+                        <div class="tool-icons">
+                            <div class="tool-icon">💻</div>
+                            <div class="tool-icon">🔧</div>
+                            <div class="tool-icon">📦</div>
+                            <div class="tool-icon">🌐</div>
+                        </div>
+                        <p>VS Code, Chrome DevTools, Webpack, Netlify</p>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3>Collaboration</h3>
+                        <div class="tool-icons">
+                            <div class="tool-icon">👥</div>
+                            <div class="tool-icon">📋</div>
+                            <div class="tool-icon">💬</div>
+                            <div class="tool-icon">📊</div>
+                        </div>
+                        <p>Slack, Notion, Miro, Jira</p>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3>Version Control</h3>
+                        <div class="tool-icons">
+                            <div class="tool-icon">🔀</div>
+                            <div class="tool-icon">📝</div>
+                            <div class="tool-icon">🚀</div>
+                            <div class="tool-icon">☁️</div>
+                        </div>
+                        <p>Git, GitHub, GitLab, Vercel</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="learning-section">
+                <h2>Currently Learning 📚</h2>
+                <p>Always expanding my skillset and staying current with industry trends</p>
+                <div class="learning-tags">
+                    <span class="learning-tag">Next.js</span>
+                    <span class="learning-tag">GraphQL</span>
+                    <span class="learning-tag">Three.js</span>
+                    <span class="learning-tag">Advanced Animation</span>
+                    <span class="learning-tag">Design Tokens</span>
+                    <span class="learning-tag">Web Performance</span>
+                    <span class="learning-tag">Advanced Testing</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            if (mobileMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
