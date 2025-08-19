@@ -18,5 +18,5 @@ Live Demo: [View Portfolio](https://juan-jarred-balcita.netlify.app/)
 ## Contact
 
 - **Email**: your.email@example.com
-- **GitHub**: [github.com/your-username](https://github.com/your-username)
-- **LinkedIn**: [linkedin.com/in/your-profile](https://linkedin.com/in/your-profile)
+- **GitHub**: [github.com/your-username](https://github.com/jarredbalcita)
+- **LinkedIn**: [linkedin.com/in/your-profile](https://www.linkedin.com/in/juan-jarred-balcita/)
