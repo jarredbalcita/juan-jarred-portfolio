@@ -1,46 +1,58 @@
-// Optimized Custom Cursor
+// Optimized Custom Cursor - Only for desktop
 const cursor = document.getElementById('customCursor');
 let animationFrame;
 
-// Use requestAnimationFrame for smooth performance
-function updateCursorPosition(e) {
-    if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
+// Check if device has touch capability (mobile/tablet detection)
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+};
+
+// Hide cursor on mobile devices
+if (isTouchDevice()) {
+    cursor.style.display = 'none';
+} else {
+    // Use requestAnimationFrame for smooth performance
+    function updateCursorPosition(e) {
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+        }
+        
+        animationFrame = requestAnimationFrame(() => {
+            cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+        });
     }
-    
-    animationFrame = requestAnimationFrame(() => {
-        cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+
+    // Throttled mouse move event
+    let throttleTimer;
+    document.addEventListener('mousemove', (e) => {
+        if (throttleTimer) return;
+        
+        throttleTimer = setTimeout(() => {
+            updateCursorPosition(e);
+            throttleTimer = null;
+        }, 16); // ~60fps
+    });
+
+    // Cursor click effect
+    document.addEventListener('mousedown', () => {
+        cursor.classList.add('clicked');
+    });
+
+    document.addEventListener('mouseup', () => {
+        cursor.classList.remove('clicked');
+    });
+
+    // Hide/show cursor efficiently
+    document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
     });
 }
-
-// Throttled mouse move event
-let throttleTimer;
-document.addEventListener('mousemove', (e) => {
-    if (throttleTimer) return;
-    
-    throttleTimer = setTimeout(() => {
-        updateCursorPosition(e);
-        throttleTimer = null;
-    }, 16); // ~60fps
-});
-
-// Cursor click effect
-document.addEventListener('mousedown', () => {
-    cursor.classList.add('clicked');
-});
-
-document.addEventListener('mouseup', () => {
-    cursor.classList.remove('clicked');
-});
-
-// Hide/show cursor efficiently
-document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-});
-
-document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-});
 
 // Enhanced Hover Effects and Animations (No Parallax)
 
