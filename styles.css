@@ -1262,3 +1262,43 @@
     a, button, input, textarea, .btn, .project-card, .skill-tag, .tech-tag, .nav-links a {
         cursor: none;
     }
+
+    /* Fix for mobile navbar - prevent line break */
+    @media (max-width: 768px) {
+        .logo {
+            font-size: 1.3rem; /* Reduce font size on mobile */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        
+        .nav-container {
+            padding: 0 1rem; /* Reduce padding for more space */
+        }
+    }
+
+    /* Additional fix for very small screens */
+    @media (max-width: 480px) {
+        .logo {
+            font-size: 1.1rem; /* Even smaller for tiny screens */
+        }
+    }
+
+    /* Hide custom cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+        .custom-cursor {
+            display: none !important;
+        }
+        
+        /* Restore default cursor for all elements on mobile */
+        body,
+        a, 
+        button, 
+        input, 
+        textarea, 
+        .btn, 
+        .project-card, 
+        .skill-tag, 
+        .tech-tag, 
+        .nav-links a {
+            cursor: auto !important;
+        }
+    }
