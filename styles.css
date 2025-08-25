@@ -359,7 +359,7 @@ nav.scrolled {
 }
 
 /* ===================================
-   Hero Section - Optimized
+   Hero Section - FIXED
    =================================== */
 .hero {
     min-height: 100vh;
@@ -372,9 +372,15 @@ nav.scrolled {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 400px;
     gap: 4rem;
     align-items: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.hero-text {
+    order: 1;
 }
 
 .hero-text h1 {
@@ -390,14 +396,14 @@ nav.scrolled {
 }
 
 .hero-text .subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
     color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 1.5rem;
 }
 
 .hero-text p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
     max-width: 600px;
@@ -414,6 +420,7 @@ nav.scrolled {
     background: url("test.png");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     border-radius: 35% 45% 45% 35% / 35% 35% 45% 45%;
     animation: morph 12s ease-in-out infinite;
     font-size: 4rem;
@@ -421,6 +428,8 @@ nav.scrolled {
     color: var(--text-primary);
     box-shadow: 0 25px 50px rgba(255, 255, 255, 0.2);
     transition: all var(--animation-slow) ease;
+    order: 2;
+    flex-shrink: 0;
 }
 
 .hero-image:hover {
@@ -955,65 +964,67 @@ footer {
    Custom Cursor - Desktop Only
    =================================== */
 @media (hover: hover) and (pointer: fine) {
-    body {
-        cursor: none; /* always hide native cursor */
-    }
-
     .custom-cursor {
         position: fixed;
         width: 20px;
         height: 20px;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.8);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
-        opacity: 1;
-        transition: opacity 0.12s ease;
+        transition: transform 0.1s ease, opacity 0.3s ease;
         mix-blend-mode: difference;
-        will-change: transform, opacity;
-        transform: translateZ(0);
     }
-
+    
     .custom-cursor.clicked {
-        transform: translateZ(0) scale(1.5);
-    }
-
-
-    /* When we want the native cursor back (over interactive controls) */
-    body.show-native-cursor {
-        cursor: auto;
-    }
-
-    /* When native cursor should be visible, hide the custom cursor */
-    body.show-native-cursor .custom-cursor {
-        opacity: 0;
-        pointer-events: none;
+        transform: scale(1.5);
     }
 }
 
-/* Force-hide system cursor on all interactive elements */
-@media (hover: hover) and (pointer: fine) {
-    a, button, input, textarea, select, label {
-        cursor: none !important;
+/* Hide cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .custom-cursor {
+        display: none !important;
     }
 }
-
 
 /* ===================================
-   Responsive Design
+   Responsive Design - IMPROVED
    =================================== */
 @media (max-width: 1024px) {
-    .hero-content,
-    .about-content,
-    .contact-content {
+    .hero-content {
         grid-template-columns: 1fr;
         gap: 3rem;
+        text-align: center;
+    }
+    
+    .hero-text {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .hero-image {
         width: 350px;
         height: 350px;
         margin: 0 auto;
+        order: 1;
+    }
+    
+    .about-content,
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
     }
 }
 
@@ -1034,10 +1045,11 @@ footer {
     /* Hero */
     .hero {
         padding: 100px 0 60px;
+        min-height: calc(100vh - 60px);
     }
     
     .hero-content {
-        text-align: center;
+        gap: 2.5rem;
     }
     
     .hero-text h1 {
@@ -1053,6 +1065,7 @@ footer {
     .cta-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
     
     .btn {
@@ -1095,6 +1108,16 @@ footer {
         font-size: 1.1rem;
     }
     
+    /* Hero specific adjustments for small screens */
+    .hero {
+        padding: 90px 0 40px;
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        gap: 2rem;
+    }
+    
     .hero-image {
         width: 250px;
         height: 250px;
@@ -1102,7 +1125,24 @@ footer {
     }
     
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+    
+    .hero-text .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-text p {
+        font-size: 0.95rem;
+    }
+    
+    .cta-buttons {
+        gap: 1rem;
+    }
+    
+    .btn {
+        padding: 0.875rem 1.75rem;
+        font-size: 0.95rem;
     }
     
     .container {
