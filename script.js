@@ -26,9 +26,8 @@ const initCustomCursor = () => {
     let currentY = 0;
     let animationFrame;
     let initialized = false;
-    const lerp = 0.22; // higher = faster follow, lower = more lag
+    const lerp = 0.22;
 
-    // Smooth cursor animation using requestAnimationFrame
     const animateCursor = () => {
         const dx = mouseX - currentX;
         const dy = mouseY - currentY;
@@ -36,17 +35,8 @@ const initCustomCursor = () => {
         currentX += dx * lerp;
         currentY += dy * lerp;
 
-        // position offset to center the 20x20 circle
         cursor.style.transform = `translate(${Math.round(currentX - 10)}px, ${Math.round(currentY - 10)}px)`;
-
         animationFrame = requestAnimationFrame(animateCursor);
-    };
-
-    // Decide when to show native cursor (interactive elements)
-    const isInteractive = (el) => {
-        if (!el) return false;
-        const interactiveSelectors = 'a, button, input, textarea, select, [role="button"], [contenteditable="true"]';
-        return !!el.closest(interactiveSelectors);
     };
 
     // Mouse move handler
@@ -54,19 +44,11 @@ const initCustomCursor = () => {
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        // On first movement, snap the custom cursor to the mouse (no jump)
         if (!initialized) {
             initialized = true;
             currentX = mouseX;
             currentY = mouseY;
             cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
-        }
-
-        // show native cursor over interactive elements
-        if (isInteractive(e.target)) {
-            document.body.classList.add('show-native-cursor');
-        } else {
-            document.body.classList.remove('show-native-cursor');
         }
 
         if (!animationFrame) {
@@ -78,37 +60,35 @@ const initCustomCursor = () => {
     const handleDown = () => cursor.classList.add('clicked');
     const handleUp = () => cursor.classList.remove('clicked');
 
-    // Hide/show cursor on leave/enter
+    // Hide/show cursor when leaving/entering viewport
     const handleMouseLeave = () => cursor.style.opacity = '0';
-    const handleMouseEnter = (e) => {
-        // when re-entering, decide if native cursor should be shown
-        if (isInteractive(e.target)) document.body.classList.add('show-native-cursor');
-        cursor.style.opacity = '1';
+    const handleMouseEnter = () => cursor.style.opacity = '1';
+
+    // Ensure cursor comes back after switching tabs
+    const handleVisibilityChange = () => {
+        if (!document.hidden) {
+            cursor.style.opacity = '1';
+        }
     };
+    const handleFocus = () => cursor.style.opacity = '1';
 
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mousedown', handleDown);
     document.addEventListener('mouseup', handleUp);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
 
-    // Accessibility: when focus goes to an input (keyboard user), show native cursor too
-    document.addEventListener('focusin', (e) => {
-        if (isInteractive(e.target)) document.body.classList.add('show-native-cursor');
-    });
-    document.addEventListener('focusout', () => {
-        document.body.classList.remove('show-native-cursor');
-    });
-
-    // Cleanup function
+    // Cleanup
     return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mousedown', handleDown);
         document.removeEventListener('mouseup', handleUp);
         document.removeEventListener('mouseleave', handleMouseLeave);
         document.removeEventListener('mouseenter', handleMouseEnter);
-        document.removeEventListener('focusin', () => {});
-        document.removeEventListener('focusout', () => {});
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('focus', handleFocus);
         if (animationFrame) cancelAnimationFrame(animationFrame);
     };
 };
