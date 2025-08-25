@@ -10,58 +10,6 @@ const isTouchDevice = () => {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ===================================
-// Custom Cursor - Desktop Only
-// ===================================
-const initCustomCursor = () => {
-    const cursor = document.getElementById('customCursor');
-    
-    if (!cursor || isTouchDevice()) {
-        if (cursor) cursor.style.display = 'none';
-        return;
-    }
-
-    // Mouse move handler - direct positioning, no delay
-    const handleMouseMove = (e) => {
-        cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-    };
-
-    // Click effects
-    const handleDown = () => cursor.classList.add('clicked');
-    const handleUp = () => cursor.classList.remove('clicked');
-
-    // Hide/show cursor when leaving/entering viewport
-    const handleMouseLeave = () => cursor.style.opacity = '0';
-    const handleMouseEnter = () => cursor.style.opacity = '1';
-
-    // Ensure cursor comes back after switching tabs
-    const handleVisibilityChange = () => {
-        if (!document.hidden) {
-            cursor.style.opacity = '1';
-        }
-    };
-    const handleFocus = () => cursor.style.opacity = '1';
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mousedown', handleDown);
-    document.addEventListener('mouseup', handleUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-
-    // Cleanup
-    return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mousedown', handleDown);
-        document.removeEventListener('mouseup', handleUp);
-        document.removeEventListener('mouseleave', handleMouseLeave);
-        document.removeEventListener('mouseenter', handleMouseEnter);
-        document.removeEventListener('visibilitychange', handleVisibilityChange);
-        window.removeEventListener('focus', handleFocus);
-    };
-};
-
-// ===================================
 // Navigation
 // ===================================
 const initNavigation = () => {
@@ -481,8 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initLazyLoading();
     
-    // Enhancement features
-    const cursorCleanup = initCustomCursor();
     
     // Performance monitoring (non-blocking)
     if (window.requestIdleCallback) {
@@ -493,10 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(initPerformanceMonitoring, 1);
     }
     
-    // Cleanup on page unload
-    window.addEventListener('beforeunload', () => {
-        if (cursorCleanup) cursorCleanup();
-    });
 });
 
 // Add loaded class for CSS animations
