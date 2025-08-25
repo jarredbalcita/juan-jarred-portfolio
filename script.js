@@ -25,47 +25,91 @@ const initCustomCursor = () => {
     let currentX = 0;
     let currentY = 0;
     let animationFrame;
-    
-    // Smooth cursor animation
+    let initialized = false;
+    const lerp = 0.22; // higher = faster follow, lower = more lag
+
+    // Smooth cursor animation using requestAnimationFrame
     const animateCursor = () => {
         const dx = mouseX - currentX;
         const dy = mouseY - currentY;
-        
-        currentX += dx * 0.1;
-        currentY += dy * 0.1;
-        
-        cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
-        
+
+        currentX += dx * lerp;
+        currentY += dy * lerp;
+
+        // position offset to center the 20x20 circle
+        cursor.style.transform = `translate(${Math.round(currentX - 10)}px, ${Math.round(currentY - 10)}px)`;
+
         animationFrame = requestAnimationFrame(animateCursor);
     };
-    
-    // Throttled mouse move handler
-    let throttleTimer;
+
+    // Decide when to show native cursor (interactive elements)
+    const isInteractive = (el) => {
+        if (!el) return false;
+        const interactiveSelectors = 'a, button, input, textarea, select, [role="button"], [contenteditable="true"]';
+        return !!el.closest(interactiveSelectors);
+    };
+
+    // Mouse move handler
     const handleMouseMove = (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
+
+        // On first movement, snap the custom cursor to the mouse (no jump)
+        if (!initialized) {
+            initialized = true;
+            currentX = mouseX;
+            currentY = mouseY;
+            cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
+        }
+
+        // show native cursor over interactive elements
+        if (isInteractive(e.target)) {
+            document.body.classList.add('show-native-cursor');
+        } else {
+            document.body.classList.remove('show-native-cursor');
+        }
+
         if (!animationFrame) {
             animationFrame = requestAnimationFrame(animateCursor);
         }
     };
-    
-    document.addEventListener('mousemove', handleMouseMove);
-    
+
     // Click effects
-    document.addEventListener('mousedown', () => cursor.classList.add('clicked'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('clicked'));
-    
-    // Hide/show cursor
-    document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
-    document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
-    
+    const handleDown = () => cursor.classList.add('clicked');
+    const handleUp = () => cursor.classList.remove('clicked');
+
+    // Hide/show cursor on leave/enter
+    const handleMouseLeave = () => cursor.style.opacity = '0';
+    const handleMouseEnter = (e) => {
+        // when re-entering, decide if native cursor should be shown
+        if (isInteractive(e.target)) document.body.classList.add('show-native-cursor');
+        cursor.style.opacity = '1';
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleDown);
+    document.addEventListener('mouseup', handleUp);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
+
+    // Accessibility: when focus goes to an input (keyboard user), show native cursor too
+    document.addEventListener('focusin', (e) => {
+        if (isInteractive(e.target)) document.body.classList.add('show-native-cursor');
+    });
+    document.addEventListener('focusout', () => {
+        document.body.classList.remove('show-native-cursor');
+    });
+
     // Cleanup function
     return () => {
         document.removeEventListener('mousemove', handleMouseMove);
-        if (animationFrame) {
-            cancelAnimationFrame(animationFrame);
-        }
+        document.removeEventListener('mousedown', handleDown);
+        document.removeEventListener('mouseup', handleUp);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+        document.removeEventListener('mouseenter', handleMouseEnter);
+        document.removeEventListener('focusin', () => {});
+        document.removeEventListener('focusout', () => {});
+        if (animationFrame) cancelAnimationFrame(animationFrame);
     };
 };
 
