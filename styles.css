@@ -955,24 +955,44 @@ footer {
    Custom Cursor - Desktop Only
    =================================== */
 @media (hover: hover) and (pointer: fine) {
+    /* Hide native cursor on desktop but allow it on interactive elements */
+    body {
+        cursor: none;
+    }
+
     .custom-cursor {
         position: fixed;
         width: 20px;
         height: 20px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 50%;
         pointer-events: none;
         z-index: 9999;
-        transition: transform 0.1s ease, opacity 0.3s ease;
+        opacity: 1;
+        transition: opacity 0.12s ease; /* only animate opacity */
         mix-blend-mode: difference;
+        will-change: transform, opacity; /* hint for performance */
+        transform: translateZ(0); /* force GPU */
     }
-    
+
+    /* Scale on click (no transform transition here — handled in JS) */
     .custom-cursor.clicked {
-        transform: scale(1.5);
+        transform: translateZ(0) scale(1.5);
+    }
+
+    /* When we want the native cursor back (over interactive controls) */
+    body.show-native-cursor {
+        cursor: auto;
+    }
+
+    /* When native cursor should be visible, hide the custom cursor */
+    body.show-native-cursor .custom-cursor {
+        opacity: 0;
+        pointer-events: none;
     }
 }
 
-/* Hide cursor on touch devices */
+/* Hide cursor on touch devices (keeps your original rule) */
 @media (hover: none) and (pointer: coarse) {
     .custom-cursor {
         display: none !important;
