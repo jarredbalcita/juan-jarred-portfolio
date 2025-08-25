@@ -26,7 +26,7 @@ const initCustomCursor = () => {
     let currentY = 0;
     let animationFrame;
     let initialized = false;
-    const lerp = 0.22;
+    const lerp = 0.6;
 
     const animateCursor = () => {
         const dx = mouseX - currentX;
