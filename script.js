@@ -216,7 +216,7 @@ document.querySelectorAll('.btn, .project-card, .skill-category, .nav-links a').
         const ripple = document.createElement('div');
         ripple.style.position = 'absolute';
         ripple.style.borderRadius = '50%';
-        ripple.style.background = 'rgba(0, 212, 255, 0.3)';
+        ripple.style.background = 'rgba(255, 255, 255, 0.3)';
         ripple.style.transform = 'scale(0)';
         ripple.style.animation = 'ripple 0.6s linear';
         ripple.style.left = '50%';
