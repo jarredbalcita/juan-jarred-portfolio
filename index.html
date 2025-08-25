@@ -3,57 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juan Jarred Balcita</title>
+    <title>Juan Jarred Balcita - Frontend & UX Developer Portfolio</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="Juan Jarred Balcita - 2nd Year Computer Science Student at Heriot-Watt University, specializing in Frontend Development and UX Design. View my projects and skills.">
+    <meta name="keywords" content="frontend developer, UX designer, web developer, portfolio, Juan Jarred Balcita, Heriot-Watt University">
+    <meta name="author" content="Juan Jarred Balcita">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Juan Jarred Balcita - Frontend & UX Developer">
+    <meta property="og:description" content="Passionate about creating beautiful, functional, and user-centered digital experiences. View my portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/og-image.jpg">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Juan Jarred Balcita - Frontend & UX Developer">
+    <meta name="twitter:description" content="Passionate about creating beautiful, functional, and user-centered digital experiences.">
+    <meta name="twitter:image" content="https://yourwebsite.com/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Preconnect to Google Fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts - Optimized to 2 font families -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Juan Jarred Balcita",
+        "jobTitle": "Frontend & UX Developer",
+        "url": "https://yourwebsite.com",
+        "sameAs": [
+            "https://linkedin.com/in/juan-jarred-balcita",
+            "https://github.com/jarredbalcita"
+        ],
+        "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Heriot-Watt University"
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="custom-cursor" id="customCursor"></div>
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
-    <!-- Background with Parallax Particles -->
-    <div class="animated-bg">
+    <!-- Custom Cursor - Desktop Only -->
+    <div class="custom-cursor" id="customCursor" aria-hidden="true"></div>
+
+    <!-- Background with Reduced Motion Support -->
+    <div class="animated-bg" aria-hidden="true">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
         <div class="gradient-orb orb-3"></div>
-        <!-- Floating Particles -->
-        <div class="parallax-particle" style="top: 10%; left: 10%;"></div>
-        <div class="parallax-particle" style="top: 20%; left: 80%;"></div>
-        <div class="parallax-particle" style="top: 50%; left: 5%;"></div>
-        <div class="parallax-particle" style="top: 60%; left: 90%;"></div>
-        <div class="parallax-particle" style="top: 80%; left: 15%;"></div>
-        <div class="parallax-particle" style="top: 30%; left: 70%;"></div>
-        <div class="parallax-particle" style="top: 90%; left: 50%;"></div>
-        <div class="parallax-particle" style="top: 15%; left: 45%;"></div>
+        <!-- Floating Particles with reduced quantity -->
+        <div class="parallax-particle" style="top: 20%; left: 10%;"></div>
+        <div class="parallax-particle" style="top: 50%; left: 80%;"></div>
+        <div class="parallax-particle" style="top: 80%; left: 50%;"></div>
     </div>
 
     <!-- Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="logo">Juan Jarred Balcita</a>
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#home" class="active" aria-current="page">Home</a></li>
                 <li><a href="#about">About me</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
         <ul>
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About me</a></li>
@@ -63,259 +106,280 @@
         </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text fade-in">
-                    <h1>Frontend & UX Developer</h1>
-                    <p class="subtitle">2nd Year Computer Science Student</p>
-                    <p>Passionate about creating beautiful, functional, and user-centered digital experiences. Currently studying at Heriot-Watt University with specializations in Frontend Development and User Experience Design.</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero parallax-section">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in">
+                        <h1>Frontend & UX Developer</h1>
+                        <p class="subtitle">2nd Year Computer Science Student</p>
+                        <p>Passionate about creating beautiful, functional, and user-centered digital experiences. Currently studying at Heriot-Watt University with specializations in Frontend Development and User Experience Design.</p>
+                        <div class="cta-buttons">
+                            <a href="#projects" class="btn btn-primary">View My Work</a>
+                            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
+                    <div class="hero-image slide-in-right" role="img" aria-label="Juan Jarred Balcita">
+                        <!-- Floating elements with reduced motion support -->
+                        <div class="floating-element" aria-hidden="true" style="top: 10%; right: 120%; font-size: 2rem;">💻</div>
+                        <div class="floating-element" aria-hidden="true" style="bottom: 10%; left: 120%; font-size: 1.5rem;">🎨</div>
+                        <div class="floating-element" aria-hidden="true" style="top: 50%; right: 130%; font-size: 1.8rem;">⚡</div>
                     </div>
                 </div>
-                <div class="hero-image slide-in-right">
-                    <!-- Floating elements around hero image -->
-                    <div class="floating-element" style="top: 10%; right: 120%; font-size: 2rem;">💻</div>
-                    <div class="floating-element" style="bottom: 10%; left: 120%; font-size: 1.5rem;">🎨</div>
-                    <div class="floating-element" style="top: 50%; right: 130%; font-size: 1.8rem;">⚡</div>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>About Me</h2>
-                <p>Combining technical skills with design thinking to build exceptional user experiences</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text slide-in-left">
-                    <h3>Hello! I'm a passionate developer and designer</h3>
-                    <p>As a 2nd year Computer Science student at Heriot-Watt University, I've discovered my passion lies at the intersection of technology and user experience. I believe great software isn't just about clean code—it's about understanding users and creating solutions that genuinely improve their lives.</p>
-                    <p>My dual focus on Frontend Development and UX Design allows me to bridge the gap between beautiful designs and functional implementations. I enjoy tackling complex problems and turning them into elegant, accessible solutions.</p>
-                    <p>When I'm not coding or designing, you can find me exploring the latest web technologies, contributing to open-source projects, or sketching out ideas for my next creative project.</p>
+        <!-- About Section -->
+        <section id="about" class="parallax-section" aria-labelledby="about-heading">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="about-heading">About Me</h2>
+                    <p>Combining technical skills with design thinking to build exceptional user experiences</p>
                 </div>
-                <div class="about-visual slide-in-right">
-                    <div class="education-info">
-                        <h4>🎓 Education</h4>
-                        <p><strong>Heriot-Watt University</strong></p>
-                        <p>Bachelor of Computer Science</p>
-                        <p>2nd Year Student (2023-2027)</p>
-                        <p>Dubai, United Arab Emirates</p>
+                <div class="about-content">
+                    <div class="about-text slide-in-left">
+                        <h3>Hello! I'm a passionate developer and designer</h3>
+                        <p>As a 2nd year Computer Science student at Heriot-Watt University, I've discovered my passion lies at the intersection of technology and user experience. I believe great software isn't just about clean code—it's about understanding users and creating solutions that genuinely improve their lives.</p>
+                        <p>My dual focus on Frontend Development and UX Design allows me to bridge the gap between beautiful designs and functional implementations. I enjoy tackling complex problems and turning them into elegant, accessible solutions.</p>
+                        <p>When I'm not coding or designing, you can find me exploring the latest web technologies, contributing to open-source projects, or sketching out ideas for my next creative project.</p>
+                    </div>
+                    <div class="about-visual slide-in-right">
+                        <div class="education-info">
+                            <h4>🎓 Education</h4>
+                            <p><strong>Heriot-Watt University</strong></p>
+                            <p>Bachelor of Computer Science</p>
+                            <p>2nd Year Student (2023-2027)</p>
+                            <p>Dubai, United Arab Emirates</p>
+                            <br>
+                            <h4>✅ Certifications</h4>
+                            <p>• Google UX Design Professional Certificate<br>
+                            • IBM Front-End Developer Professional Certificate</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="parallax-section" aria-labelledby="projects-heading">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="projects-heading">Featured Projects</h2>
+                    <p>A showcase of my recent work combining frontend development with thoughtful user experience</p>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card fade-in">
+                        <div class="project-image" role="img" aria-label="BudgetBuddy project icon">
+                            <img src="budget-buddy-thumbnail.jpg" alt="BudgetBuddy App Screenshot" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='💰'">
+                        </div>
+                        <div class="project-content">
+                            <h3>BudgetBuddy - Multi-User Expense Manager</h3>
+                            <p>Collaborative expense tracking app allowing multiple users to manage shared budgets. Features real-time updates, spending analytics, and intuitive categorization with accessibility-first design.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Redux</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">User Research</span>
+                                <span class="tech-tag">WCAG</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://budgetbuddy-demo.com" aria-label="View BudgetBuddy Live Demo">🔗 Live Demo</a>
+                                <a href="https://github.com/jarredbalcita/budgetbuddy" aria-label="View BudgetBuddy on GitHub">💻 GitHub</a>
+                                <a href="https://budgetbuddy-ux.com" aria-label="View BudgetBuddy UX Process">🎨 UX Process</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card fade-in">
+                        <div class="project-image" role="img" aria-label="TeamSync project icon">
+                            <img src="teamsync-thumbnail.jpg" alt="TeamSync Dashboard Screenshot" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='🚀'">
+                        </div>
+                        <div class="project-content">
+                            <h3>TeamSync - Collaboration Dashboard</h3>
+                            <p>Modern team collaboration platform with real-time messaging, task management, and project tracking. Conducted extensive user interviews to optimize workflow efficiency and team communication.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Jest</span>
+                                <span class="tech-tag">Adobe XD</span>
+                                <span class="tech-tag">Usability Testing</span>
+                                <span class="tech-tag">Responsive Design</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://teamsync-demo.com" aria-label="View TeamSync Live Demo">🔗 Live Demo</a>
+                                <a href="https://github.com/jarredbalcita/teamsync" aria-label="View TeamSync on GitHub">💻 GitHub</a>
+                                <a href="https://teamsync-ux.com" aria-label="View TeamSync UX Process">🎨 UX Process</a>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card fade-in">
+                        <div class="project-image" role="img" aria-label="FitTracker project icon">
+                            <img src="fittracker-thumbnail.jpg" alt="FitTracker App Screenshot" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='💪'">
+                        </div>
+                        <div class="project-content">
+                            <h3>FitTracker - Personal Fitness App</h3>
+                            <p>Comprehensive fitness tracking application with workout planning, progress visualization, and social features. Emphasizes motivational UX design and data-driven insights for user engagement.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">CSS Animations</span>
+                                <span class="tech-tag">Chart.js</span>
+                                <span class="tech-tag">Figma</span>
+                                <span class="tech-tag">User Testing</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://fittracker-demo.com" aria-label="View FitTracker Live Demo">🔗 Live Demo</a>
+                                <a href="https://github.com/jarredbalcita/fittracker" aria-label="View FitTracker on GitHub">💻 GitHub</a>
+                                <a href="https://fittracker-ux.com" aria-label="View FitTracker UX Process">🎨 UX Process</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills parallax-section" aria-labelledby="skills-heading">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="skills-heading">Skills & Technologies</h2>
+                    <p>A comprehensive toolkit for modern web development and user experience design</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>🚀 Frontend Development</h3>
+                        <div class="skill-tags" role="list">
+                            <span class="skill-tag" role="listitem">HTML5</span>
+                            <span class="skill-tag" role="listitem">CSS3</span>
+                            <span class="skill-tag" role="listitem">JavaScript (ES6+)</span>
+                            <span class="skill-tag" role="listitem">TypeScript</span>
+                            <span class="skill-tag" role="listitem">React</span>
+                            <span class="skill-tag" role="listitem">Redux</span>
+                            <span class="skill-tag" role="listitem">Next.js</span>
+                            <span class="skill-tag" role="listitem">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category fade-in">
+                        <h3>🛠 Development Tools</h3>
+                        <div class="skill-tags" role="list">
+                            <span class="skill-tag" role="listitem">Git</span>
+                            <span class="skill-tag" role="listitem">Jest</span>
+                            <span class="skill-tag" role="listitem">Cypress</span>
+                            <span class="skill-tag" role="listitem">npm / yarn</span>
+                            <span class="skill-tag" role="listitem">Netlify</span>
+                            <span class="skill-tag" role="listitem">Vercel</span>
+                            <span class="skill-tag" role="listitem">VS Code</span>
+                            <span class="skill-tag" role="listitem">Chrome DevTools</span>
+                        </div>
+                    </div>
+                    <div class="skill-category fade-in">
+                        <h3>🎨 UX/UI Design</h3>
+                        <div class="skill-tags" role="list">
+                            <span class="skill-tag" role="listitem">Figma</span>
+                            <span class="skill-tag" role="listitem">Adobe Photoshop</span>
+                            <span class="skill-tag" role="listitem">User Research</span>
+                            <span class="skill-tag" role="listitem">Wireframing</span>
+                            <span class="skill-tag" role="listitem">Prototyping</span>
+                            <span class="skill-tag" role="listitem">Usability Testing</span>
+                            <span class="skill-tag" role="listitem">User-Centered Design</span>
+                            <span class="skill-tag" role="listitem">Accessibility (WCAG)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category fade-in">
+                        <h3>💡 Soft Skills</h3>
+                        <div class="skill-tags" role="list">
+                            <span class="skill-tag" role="listitem">Problem solving</span>
+                            <span class="skill-tag" role="listitem">Time management</span>
+                            <span class="skill-tag" role="listitem">Communication</span>
+                            <span class="skill-tag" role="listitem">Adaptability</span>
+                            <span class="skill-tag" role="listitem">Attention to detail</span>
+                            <span class="skill-tag" role="listitem">Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact parallax-section" aria-labelledby="contact-heading">
+            <div class="parallax-bg" aria-hidden="true"></div>
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="contact-heading">Let's Work Together</h2>
+                    <p>I'm always excited to discuss new opportunities and creative projects</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info slide-in-left">
+                        <h3>Get In Touch</h3>
+                        <div class="contact-item">
+                            <span aria-hidden="true">📧</span>
+                            <a href="mailto:jarredbalcita@gmail.com">jarredbalcita@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span aria-hidden="true">💼</span>
+                            <a href="https://linkedin.com/in/juan-jarred-balcita" target="_blank" rel="noopener noreferrer">linkedin.com/in/juan-jarred-balcita</a>
+                        </div>
+                        <div class="contact-item">
+                            <span aria-hidden="true">💻</span>
+                            <a href="https://github.com/jarredbalcita" target="_blank" rel="noopener noreferrer">github.com/jarredbalcita</a>
+                        </div>
+                        <div class="contact-item">
+                            <span aria-hidden="true">📍</span>
+                            <span>Dubai, United Arab Emirates</span>
+                        </div>
                         <br>
-                        <h4>✅ Certifications</h4>
-                        <p>• Google UX Design Professional Certificate<br>
-                        • IBM Front-End Developer Professional Certificate<br>
+                        <p>Available for freelance projects, internships, and collaboration opportunities. Let's create something amazing together!</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Featured Projects</h2>
-                <p>A showcase of my recent work combining frontend development with thoughtful user experience</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image">💰</div>
-                    <div class="project-content">
-                        <h3>BudgetBuddy - Multi-User Expense Manager</h3>
-                        <p>Collaborative expense tracking app allowing multiple users to manage shared budgets. Features real-time updates, spending analytics, and intuitive categorization with accessibility-first design.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Redux</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">User Research</span>
-                            <span class="tech-tag">WCAG</span>
+                    <form class="contact-form slide-in-right" id="contactForm" novalidate aria-labelledby="contact-form-heading">
+                        <h3 id="contact-form-heading" class="visually-hidden">Contact Form</h3>
+                        <div class="form-group">
+                            <label for="name">Name <span aria-label="required">*</span></label>
+                            <input type="text" id="name" name="name" required aria-required="true" minlength="2" maxlength="100">
+                            <span class="error-message" role="alert" aria-live="polite"></span>
                         </div>
-                        <div class="project-links">
-                            <a href="#">🔗 Live Demo</a>
-                            <a href="#">💻 GitHub</a>
-                            <a href="#">🎨 UX Process</a>
+                        <div class="form-group">
+                            <label for="email">Email <span aria-label="required">*</span></label>
+                            <input type="email" id="email" name="email" required aria-required="true" maxlength="254">
+                            <span class="error-message" role="alert" aria-live="polite"></span>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">🚀</div>
-                    <div class="project-content">
-                        <h3>TeamSync - Collaboration Dashboard</h3>
-                        <p>Modern team collaboration platform with real-time messaging, task management, and project tracking. Conducted extensive user interviews to optimize workflow efficiency and team communication.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Jest</span>
-                            <span class="tech-tag">Adobe XD</span>
-                            <span class="tech-tag">Usability Testing</span>
-                            <span class="tech-tag">Responsive Design</span>
+                        <div class="form-group">
+                            <label for="subject">Subject <span aria-label="required">*</span></label>
+                            <input type="text" id="subject" name="subject" required aria-required="true" minlength="3" maxlength="200">
+                            <span class="error-message" role="alert" aria-live="polite"></span>
                         </div>
-                        <div class="project-links">
-                            <a href="#">🔗 Live Demo</a>
-                            <a href="#">💻 GitHub</a>
-                            <a href="#">🎨 UX Process</a>
+                        <div class="form-group">
+                            <label for="message">Message <span aria-label="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required aria-required="true" minlength="10" maxlength="1000"></textarea>
+                            <span class="error-message" role="alert" aria-live="polite"></span>
                         </div>
-                    </div>
-                </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">💪</div>
-                    <div class="project-content">
-                        <h3>FitTracker - Personal Fitness App</h3>
-                        <p>Comprehensive fitness tracking application with workout planning, progress visualization, and social features. Emphasizes motivational UX design and data-driven insights for user engagement.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">CSS Animations</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">User Testing</span>
+                        <!-- Hidden honeypot field for spam protection -->
+                        <div class="honey" aria-hidden="true">
+                            <input type="text" name="honey" tabindex="-1" autocomplete="off">
                         </div>
-                        <div class="project-links">
-                            <a href="#">🔗 Live Demo</a>
-                            <a href="#">💻 GitHub</a>
-                            <a href="#">🎨 UX Process</a>
-                        </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <div class="form-status" role="status" aria-live="polite"></div>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Skills & Technologies</h2>
-                <p>A comprehensive toolkit for modern web development and user experience design</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>🚀 Frontend Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript (ES6+)</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Redux</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Responsive Design</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>🛠 Development Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Jest</span>
-                        <span class="skill-tag">Cypress</span>
-                        <span class="skill-tag">npm / yarn</span>
-                        <span class="skill-tag">Netlify</span>
-                        <span class="skill-tag">Vercel</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Chrome DevTools</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>🎨 UX/UI Design</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Adobe Photoshop</span>
-                        <span class="skill-tag">User Research</span>
-                        <span class="skill-tag">Wireframing</span>
-                        <span class="skill-tag">Prototyping</span>
-                        <span class="skill-tag">Usability Testing</span>
-                        <span class="skill-tag">User-Centered Design</span>
-                        <span class="skill-tag">Accessibility (WCAG)</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>💡 Soft Skills</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Problem solving</span>
-                        <span class="skill-tag">Time management</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Adaptability</span>
-                        <span class="skill-tag">Attention to detail</span>
-                        <span class="skill-tag">Collaboration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact parallax-section">
-        <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Let's Work Together</h2>
-                <p>I'm always excited to discuss new opportunities and creative projects</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info slide-in-left">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>jarredbalcita@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💼</span>
-                        <span>linkedin.com/in/juan-jarred-balcita</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>💻</span>
-                        <span>github.com/jarredbalcita</span>
-                    </div>
-                    <div class="contact-item">
-                        <span>📍</span>
-                        <span>Dubai, United Arab Emirates</span>
-                    </div>
-                    <br>
-                    <p>Available for freelance projects, internships, and collaboration opportunities. Let's create something amazing together!</p>
-                </div>
-                <form class="contact-form slide-in-right" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
-            <p>&copy; 2024 Juan Jarred Balcita. Built with javascript and lots of coffee.</p>
+            <p>&copy; 2024 Juan Jarred Balcita. Built with JavaScript and lots of coffee.</p>
         </div>
     </footer>
 
     <!-- External JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
