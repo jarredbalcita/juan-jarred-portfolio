@@ -19,42 +19,47 @@ const initCustomCursor = () => {
         if (cursor) cursor.style.display = 'none';
         return;
     }
-    
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-    let animationFrame;
-    let initialized = false;
-    const lerp = 1;
 
-    const animateCursor = () => {
-        const dx = mouseX - currentX;
-        const dy = mouseY - currentY;
-
-        currentX += dx * lerp;
-        currentY += dy * lerp;
-
-        cursor.style.transform = `translate(${Math.round(currentX - 10)}px, ${Math.round(currentY - 10)}px)`;
-        animationFrame = requestAnimationFrame(animateCursor);
-    };
-
-    // Mouse move handler
+    // Mouse move handler - direct positioning, no lerp
     const handleMouseMove = (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+        cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    };
 
-        if (!initialized) {
-            initialized = true;
-            currentX = mouseX;
-            currentY = mouseY;
-            cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
-        }
+    // Click effects
+    const handleDown = () => cursor.classList.add('clicked');
+    const handleUp = () => cursor.classList.remove('clicked');
 
-        if (!animationFrame) {
-            animationFrame = requestAnimationFrame(animateCursor);
+    // Hide/show cursor when leaving/entering viewport
+    const handleMouseLeave = () => cursor.style.opacity = '0';
+    const handleMouseEnter = () => cursor.style.opacity = '1';
+
+    // Ensure cursor comes back after switching tabs
+    const handleVisibilityChange = () => {
+        if (!document.hidden) {
+            cursor.style.opacity = '1';
         }
     };
+    const handleFocus = () => cursor.style.opacity = '1';
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousedown', handleDown);
+    document.addEventListener('mouseup', handleUp);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseenter', handleMouseEnter);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
+
+    // Cleanup
+    return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+        document.removeEventListener('mousedown', handleDown);
+        document.removeEventListener('mouseup', handleUp);
+        document.removeEventListener('mouseleave', handleMouseLeave);
+        document.removeEventListener('mouseenter', handleMouseEnter);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('focus', handleFocus);
+    };
+};
 
     // Click effects
     const handleDown = () => cursor.classList.add('clicked');
@@ -91,7 +96,6 @@ const initCustomCursor = () => {
         window.removeEventListener('focus', handleFocus);
         if (animationFrame) cancelAnimationFrame(animationFrame);
     };
-};
 
 // ===================================
 // Navigation
