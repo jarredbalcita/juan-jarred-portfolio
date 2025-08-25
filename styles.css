@@ -991,12 +991,13 @@ footer {
     }
 }
 
-/* Hide cursor on touch devices (keeps your original rule) */
-@media (hover: none) and (pointer: coarse) {
-    .custom-cursor {
-        display: none !important;
+/* Force-hide system cursor on all interactive elements */
+@media (hover: hover) and (pointer: fine) {
+    a, button, input, textarea, select, label {
+        cursor: none !important;
     }
 }
+
 
 /* ===================================
    Responsive Design
